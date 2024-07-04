@@ -1,3 +1,4 @@
+import { ProductGridItem } from "@/components";
 import { Product } from "@/interfaces";
 
 interface Props {
@@ -10,7 +11,7 @@ export const ProductGrid = ({ products }: Props) => {
       {
         products.map((product) => (
           <div key={product.slug}>
-            <h3>{product.title}</h3>
+            <ProductGridItem product={product} />
           </div>
         ))
       }
