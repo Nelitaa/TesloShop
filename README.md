@@ -254,13 +254,11 @@ If you like this project...
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- ACKNOWLEDGEMENTS -->
-
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-> Give credit to everyone who inspired your codebase.
+I would like to thank Tesla for the design inspiration from their apparel collection: [TeslaShop](https://shop.tesla.com/category/apparel).
 
-I would like to thank...
+I also want to extend my gratitude to [Fernando Herrera](https://fernando-herrera.com/) for his course, "Next.js: The React Framework for Production" which provided invaluable guidance and knowledge throughout this project.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -294,6 +292,7 @@ _NOTE: we recommend using the [MIT license](https://choosealicense.com/licenses/
 
 ```sh
 npx create-next-app@latest .
+npm install react-icons --save
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
