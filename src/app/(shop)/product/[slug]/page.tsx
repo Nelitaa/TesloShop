@@ -1,3 +1,4 @@
+import { SizeSelector } from "@/components";
 import { titleFont } from "@/config/fonts";
 import { initialData } from "@/seed/seed";
 import { notFound } from "next/navigation";
@@ -26,7 +27,10 @@ export default function ProductPage({ params }: Props) {
       <div className="col-span-1 px-5">
         <h1 className={`${titleFont.className} antialiased font-bold text-xl`}>{product.title}</h1>
         <p className="text-lg mb-5">${product.price}</p>
-        {/* todo: Size Selector */}
+        <SizeSelector
+          selectedSize={product.sizes[0]}
+          availableSizes={product.sizes}
+        />
         {/* todo: Quantity Selector */}
         <button className="btn-primary my-5">Add to cart</button>
         <h3 className="font-bold text-sm">Description</h3>
