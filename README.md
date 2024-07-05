@@ -293,6 +293,8 @@ _NOTE: we recommend using the [MIT license](https://choosealicense.com/licenses/
 ```sh
 npx create-next-app@latest .
 npm install react-icons --save
+npm install zustand
+npm i clsx
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
