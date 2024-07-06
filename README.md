@@ -295,6 +295,7 @@ npx create-next-app@latest .
 npm install react-icons --save
 npm install zustand
 npm i clsx
+npm install swiper
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
