@@ -288,7 +288,7 @@ _NOTE: we recommend using the [MIT license](https://choosealicense.com/licenses/
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## 💻 Commands used <a name="commands"></a>
+## 💻 Commands used and visited web pages <a name="commands"></a>
 
 ```sh
 npx create-next-app@latest .
@@ -297,5 +297,10 @@ npm install zustand
 npm i clsx
 npm install swiper
 ```
+
+https://react-icons.github.io/react-icons/
+https://zustand-demo.pmnd.rs/
+https://swiperjs.com/
+https://tailwindcomponents.com/component/hoverable-table
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
