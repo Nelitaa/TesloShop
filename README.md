@@ -114,15 +114,11 @@ Clone this repository to your desired folder:
 
 Install this project:
 
-1. To start the database, use Docker. Run the command: `docker compose up -d`
-2. Create a copy of `.env.template` and rename it to `.env`.
-3. Open the `.env` file in a text editor.
-4. Replace the values of the environment variables as needed with your specific environment configuration.
-5. Run the following commands:
-
-```sh
-npm install
-```
+1. Create a copy of `.env.template` and rename it to `.env`.
+2. Open the `.env` file in a text editor. Replace the values of the environment variables as needed with your specific environment configuration.
+3. Install dependencies `npm install`.
+4. To start the database, use Docker. Run the command: `docker compose up -d`.
+5. Run Prisma migrations `npx prisma migrate dev`.
 
 ### Usage
 
@@ -216,7 +212,10 @@ npm install react-icons --save
 npm install zustand
 npm i clsx
 npm install swiper
+npm install prisma --save-dev
 npx prisma init --datasource-provider PostgreSQL
+npx prisma migrate dev --name ProductCategory
+npx prisma migrate dev --name ProductImage
 ```
 
 https://react-icons.github.io/react-icons/
