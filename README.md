@@ -119,6 +119,7 @@ Install this project:
 3. Install dependencies `npm install`.
 4. To start the database, use Docker. Run the command: `docker compose up -d`.
 5. Run Prisma migrations `npx prisma migrate dev`.
+6. Run seed `npm run seed`.
 
 ### Usage
 
@@ -216,6 +217,9 @@ npm install prisma --save-dev
 npx prisma init --datasource-provider PostgreSQL
 npx prisma migrate dev --name ProductCategory
 npx prisma migrate dev --name ProductImage
+npm i -D ts-node
+npx tsc --init (cd src/seed/)
+npx prisma generate
 ```
 
 https://react-icons.github.io/react-icons/
@@ -224,5 +228,7 @@ https://swiperjs.com/
 https://tailwindcomponents.com/component/hoverable-table
 https://tableplus.com/
 https://www.prisma.io/
+https://www.prisma.io/docs/getting-started/quickstart
+https://www.prisma.io/docs/orm/more/help-and-troubleshooting/help-articles/nextjs-prisma-client-dev-practices
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
