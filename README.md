@@ -216,11 +216,14 @@ npm install react-icons --save
 npm install zustand
 npm i clsx
 npm install swiper
+npx prisma init --datasource-provider PostgreSQL
 ```
 
 https://react-icons.github.io/react-icons/
 https://zustand-demo.pmnd.rs/
 https://swiperjs.com/
 https://tailwindcomponents.com/component/hoverable-table
+https://tableplus.com/
+https://www.prisma.io/
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
