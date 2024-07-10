@@ -8,19 +8,21 @@ interface SeedProduct {
   tags: string[];
   title: string;
   type: ValidTypes;
-  gender: 'men' | 'women' | 'kid' | 'unisex'
+  gender: 'men' | 'women' | 'kid' | 'Unisex';
 }
 
 type ValidSizes = 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL';
 type ValidTypes = 'shirts' | 'pants' | 'hoodies' | 'hats';
 
 interface SeedData {
-  categories: string[],
-  products: SeedProduct[],
+  categories: string[];
+  products: SeedProduct[];
 }
 
 export const initialData: SeedData = {
-  categories: ['Shirts', 'Pants', 'Hoodies', 'Hats'],
+  categories: [
+    'Shirts', 'Pants', 'Hoodies', 'Hats'
+  ],
   products: [
     {
       description: "Introducing the Tesla Chill Collection. The Men’s Chill Crew Neck Sweatshirt has a premium, heavyweight exterior and soft fleece interior for comfort in any season. The sweatshirt features a subtle thermoplastic polyurethane T logo on the chest and a Tesla wordmark below the back collar. Made from 60% cotton and 40% recycled polyester.",
@@ -52,6 +54,7 @@ export const initialData: SeedData = {
       title: "Men's Quilted Shirt Jacket",
       gender: 'men'
     },
+
     {
       description: "Introducing the Tesla Raven Collection. The Men's Raven Lightweight Zip Up Bomber has a premium, modern silhouette made from a sustainable bamboo cotton blend for versatility in any season. The hoodie features subtle thermoplastic polyurethane Tesla logos on the left chest and below the back collar, a concealed chest pocket with custom matte zipper pulls and a french terry interior. Made from 70% bamboo and 30% cotton.",
       images: [
@@ -67,6 +70,7 @@ export const initialData: SeedData = {
       title: "Men's Raven Lightweight Zip Up Bomber Jacket",
       gender: 'men'
     },
+
     {
       description: "Introducing the Tesla Turbine Collection. Designed for style, comfort and everyday lifestyle, the Men's Turbine Long Sleeve Tee features a subtle, water-based T logo on the left chest and our Tesla wordmark below the back collar. The lightweight material is double-dyed, creating a soft, casual style for ideal wear in any season. Made from 50% cotton and 50% polyester.",
       images: [
@@ -323,7 +327,7 @@ export const initialData: SeedData = {
       gender: 'men'
     },
     {
-      description: "Introducing the Tesla Chill Collection. The Chill Pullover Hoodie has a premium, heavyweight exterior and soft fleece interior for comfort in any season. The unisex hoodie features subtle thermoplastic polyurethane Tesla logos across the chest and on the sleeve, a double layer single seam hood and pockets with custom matte zipper pulls. Made from 60% cotton and 40% recycled polyester.",
+      description: "Introducing the Tesla Chill Collection. The Chill Pullover Hoodie has a premium, heavyweight exterior and soft fleece interior for comfort in any season. The Unisex hoodie features subtle thermoplastic polyurethane Tesla logos across the chest and on the sleeve, a double layer single seam hood and pockets with custom matte zipper pulls. Made from 60% cotton and 40% recycled polyester.",
       images: [
         '1740051-00-A_0_2000.jpg',
         '1740051-00-A_1.jpg',
@@ -335,7 +339,7 @@ export const initialData: SeedData = {
       type: 'hoodies',
       tags: ['hoodie'],
       title: "Chill Pullover Hoodie",
-      gender: 'unisex'
+      gender: 'Unisex'
     },
     {
       description: "Introducing the Tesla Chill Collection. The Men's Chill Full Zip Hoodie has a premium, heavyweight exterior and soft fleece interior for comfort in any season. The hoodie features subtle thermoplastic polyurethane Tesla logos on the left chest and sleeve, a double layer single seam hood and pockets with custom matte zipper pulls. Made from 60% cotton and 40% recycled polyester.",
@@ -383,7 +387,7 @@ export const initialData: SeedData = {
       gender: 'men'
     },
     {
-      description: "The Unisex 3D Large Wordmark Pullover Hoodie features soft fleece and an adjustable, jersey-lined hood for comfort and coverage. Designed in a unisex style, the pullover hoodie includes a tone-on-tone 3D silicone-printed wordmark across the chest.",
+      description: "The Unisex 3D Large Wordmark Pullover Hoodie features soft fleece and an adjustable, jersey-lined hood for comfort and coverage. Designed in a Unisex style, the pullover hoodie includes a tone-on-tone 3D silicone-printed wordmark across the chest.",
       images: [
         '8529107-00-A_0_2000.jpg',
         '8529107-00-A_1.jpg',
@@ -395,7 +399,7 @@ export const initialData: SeedData = {
       type: 'hoodies',
       tags: ['hoodie'],
       title: "3D Large Wordmark Pullover Hoodie",
-      gender: 'unisex'
+      gender: 'Unisex'
     },
     {
       description: "As with the iconic Tesla logo, the Cybertruck Graffiti Hoodie is a classic in the making. Unisex style featuring soft fleece and an adjustable, jersey-lined hood for comfortable coverage.",
@@ -410,7 +414,7 @@ export const initialData: SeedData = {
       type: 'hoodies',
       tags: ['hoodie'],
       title: "Cybertruck Graffiti Hoodie",
-      gender: 'unisex'
+      gender: 'Unisex'
     },
     {
       description: "The Relaxed T Logo Hat is a classic silhouette combined with modern details, featuring a 3D T logo and a custom metal buckle closure. The ultrasoft design is flexible and abrasion resistant, while the inner sweatband includes quilted padding for extra comfort and moisture wicking. The visor is fully made from recycled plastic bottles. 100% Cotton.",
@@ -425,7 +429,7 @@ export const initialData: SeedData = {
       type: 'hats',
       tags: ['hats'],
       title: "Relaxed T Logo Hat",
-      gender: 'unisex'
+      gender: 'Unisex'
     },
     {
       description: "The Relaxed T Logo Hat is a classic silhouette combined with modern details, featuring a 3D T logo and a custom metal buckle closure. The ultrasoft design is flexible and abrasion resistant, while the inner sweatband includes quilted padding for extra comfort and moisture wicking. The visor is fully made from recycled plastic bottles. 100% Cotton.",
@@ -440,7 +444,7 @@ export const initialData: SeedData = {
       type: 'hats',
       tags: ['hats'],
       title: "Thermal Cuffed Beanie",
-      gender: 'unisex'
+      gender: 'Unisex'
     },
     {
       description: "The Women's Cropped Puffer Jacket features a uniquely cropped silhouette for the perfect, modern style while on the go during the cozy season ahead. The puffer features subtle silicone injected Tesla logos below the back collar and on the right sleeve, custom matte metal zipper pulls and a soft, fleece lined collar. Made from 87% nylon and 13% polyurethane.",
@@ -803,4 +807,4 @@ export const initialData: SeedData = {
       gender: 'kid'
     },
   ]
-}
+};
