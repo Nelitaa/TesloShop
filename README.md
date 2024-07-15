@@ -230,5 +230,6 @@ https://tableplus.com/
 https://www.prisma.io/
 https://www.prisma.io/docs/getting-started/quickstart
 https://www.prisma.io/docs/orm/more/help-and-troubleshooting/help-articles/nextjs-prisma-client-dev-practices
+https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
