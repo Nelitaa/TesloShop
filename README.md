@@ -220,6 +220,8 @@ npx prisma migrate dev --name ProductImage
 npm i -D ts-node
 npx tsc --init (cd src/seed/)
 npx prisma generate
+npm run build
+npm run lint
 ```
 
 https://react-icons.github.io/react-icons/
