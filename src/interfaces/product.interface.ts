@@ -3,10 +3,11 @@ export interface Product {
   description: string;
   images: string[];
   inStock: number;
-  price: Size[];
+  price: number;
   slug: string;
   tags: string[];
   title: string;
+  sizes: Size[];
   // todo: type: Type;
   gender: Category;
 }

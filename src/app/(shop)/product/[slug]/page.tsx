@@ -1,10 +1,10 @@
 import { getProductBySlug } from "@/actions";
-import { ProductMobileSlideshow, ProductSlideshow, QuantitySelector, SizeSelector } from "@/components";
+import { ProductMobileSlideshow, ProductSlideshow } from "@/components";
 import { StockLabel } from "@/components/product/stock-label/StockLabel";
 import { titleFont } from "@/config/fonts";
-import { get } from "http";
 import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
+import { AddToCart } from "./ui/AddToCart";
 
 interface Props {
   params: {
@@ -61,12 +61,7 @@ export default async function ProductPage({ params }: Props) {
         <StockLabel slug={product.slug} />
         <h1 className={`${titleFont.className} antialiased font-bold text-xl`}>{product.title}</h1>
         <p className="text-lg mb-5">${product.price}</p>
-        <SizeSelector
-          selectedSize={product.sizes[0]}
-          availableSizes={product.sizes}
-        />
-        <QuantitySelector quantity={2} />
-        <button className="btn-primary my-5">Add to cart</button>
+        <AddToCart product={product} />
         <h3 className="font-bold text-sm">Description</h3>
         <p className="font-light">{product.description}</p>
       </div>
