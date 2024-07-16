@@ -2,12 +2,33 @@ import { getProductBySlug } from "@/actions";
 import { ProductMobileSlideshow, ProductSlideshow, QuantitySelector, SizeSelector } from "@/components";
 import { StockLabel } from "@/components/product/stock-label/StockLabel";
 import { titleFont } from "@/config/fonts";
+import { get } from "http";
+import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 
 interface Props {
   params: {
     slug: string;
   };
+}
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+
+  const slug = params.slug;
+  const product = await getProductBySlug(slug);
+
+  return {
+    title: product?.title ?? 'Product not found',
+    description: product?.description ?? '',
+    openGraph: {
+      title: product?.title ?? 'Product not found',
+      description: product?.description ?? '',
+      images: [`/products/${product?.images[1]}`],
+    },
+  }
 }
 
 export default async function ProductPage({ params }: Props) {
