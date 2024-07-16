@@ -2,7 +2,6 @@
 
 import prisma from "@/lib/prisma";
 import { Gender } from "@prisma/client";
-import { pages } from "next/dist/build/templates/app-page";
 
 interface PaginationOptions {
   page?: number;
