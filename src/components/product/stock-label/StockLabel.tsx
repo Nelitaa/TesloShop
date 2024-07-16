@@ -10,7 +10,7 @@ interface Props {
 
 export const StockLabel = ({ slug }: Props) => {
 
-  const [stock, setStock] = useState(0);
+  const [stock, setStock] = useState(100);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
