@@ -5,6 +5,12 @@ import { persist } from 'zustand/middleware';
 interface State {
   cart: CartProduct[];
   getTotalItems: () => number;
+  getSummaryInformation: () => {
+    totalItems: number;
+    totalPrice: number;
+    tax: number;
+    subTotalPrice: number;
+  }
   addProductToCart: (product: CartProduct) => void;
   updateProductQuantity: (product: CartProduct, quantity: number) => void;
   removeProduct: (product: CartProduct) => void;
@@ -19,6 +25,16 @@ export const useCartStore = create<State>()(
         const { cart } = get();
         return cart.reduce((total, item) => total + item.quantity, 0);
       },
+
+      getSummaryInformation: () => {
+        const { cart } = get();
+        const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+        const subTotalPrice = cart.reduce((subTotal, product) => subTotal + (product.price * product.quantity), 0);
+        const tax = subTotalPrice * 0.15;
+        const totalPrice = subTotalPrice + tax;
+        return { totalItems, totalPrice, tax, subTotalPrice };
+      },
+
       addProductToCart: (product: CartProduct) => {
         const { cart } = get();
         // Check if the product is already in the cart
