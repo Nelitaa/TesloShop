@@ -222,6 +222,8 @@ npx tsc --init (cd src/seed/)
 npx prisma generate
 npm run build
 npm run lint
+npm install next-auth@beta
+npx auth secret
 ```
 
 https://react-icons.github.io/react-icons/
@@ -236,5 +238,6 @@ https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config
 https://nextjs.org/docs/app/building-your-application/optimizing/metadata
 https://www.opengraph.xyz/
 https://ngrok.com/
+https://nextjs.org/learn/dashboard-app/adding-authentication
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
