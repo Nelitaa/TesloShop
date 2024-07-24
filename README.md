@@ -226,6 +226,7 @@ npm install next-auth@beta
 npx auth secret
 npm i zod
 npx prisma migrate dev --name user-role
+npm i bcryptjs
 ```
 
 https://react-icons.github.io/react-icons/
