@@ -224,6 +224,7 @@ npm run build
 npm run lint
 npm install next-auth@beta
 npx auth secret
+npm i zod
 ```
 
 https://react-icons.github.io/react-icons/
