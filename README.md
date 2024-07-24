@@ -225,6 +225,7 @@ npm run lint
 npm install next-auth@beta
 npx auth secret
 npm i zod
+npx prisma migrate dev --name user-role
 ```
 
 https://react-icons.github.io/react-icons/
