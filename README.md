@@ -227,6 +227,7 @@ npx auth secret
 npm i zod
 npx prisma migrate dev --name user-role
 npm i bcryptjs
+npm install react-hook-form
 ```
 
 https://react-icons.github.io/react-icons/
@@ -242,5 +243,6 @@ https://nextjs.org/docs/app/building-your-application/optimizing/metadata
 https://www.opengraph.xyz/
 https://ngrok.com/
 https://nextjs.org/learn/dashboard-app/adding-authentication
+https://react-hook-form.com/
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
