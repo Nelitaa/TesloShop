@@ -1,5 +1,6 @@
 'use client';
 
+import clsx from "clsx";
 import Link from "next/link"
 import { SubmitHandler, useForm } from "react-hook-form";
 
@@ -10,19 +11,55 @@ type FormInputs = {
 }
 
 export const RegisterForm = () => {
-  const { register, handleSubmit } = useForm<FormInputs>();
+  const { register, handleSubmit, formState: { errors } } = useForm<FormInputs>();
   const onSubmit: SubmitHandler<FormInputs> = async (data) => {
     const { name, email, password } = data;
 
   }
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
+      {
+        errors.name?.type === 'required' && (<span className="text-red-500">* Name is required</span>)
+      }
       <label htmlFor="name">Name</label>
-      <input className="px-5 py-2 border bg-gray-200 rounded mb-5" type="text" autoFocus {...register('name', { required: true })} />
+      <input
+        className={
+          clsx(
+            "px-5 py-2 border bg-gray-200 rounded mb-5",
+            {
+              "border-red-500": errors.name
+            }
+          )
+        }
+        type="text"
+        autoFocus
+        {...register('name', { required: true })}
+      />
       <label htmlFor="email">Email</label>
-      <input className="px-5 py-2 border bg-gray-200 rounded mb-5" type="email" {...register('email', { required: true, pattern: /^\S+@\S+$/i })} />
+      <input
+        className={
+          clsx(
+            "px-5 py-2 border bg-gray-200 rounded mb-5",
+            {
+              "border-red-500": errors.email
+            }
+          )
+        }
+        type="email"
+        {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
+      />
       <label htmlFor="password">Password</label>
-      <input className="px-5 py-2 border bg-gray-200 rounded mb-5" type="password" {...register('password', { required: true })} />
+      <input
+        className={
+          clsx(
+            "px-5 py-2 border bg-gray-200 rounded mb-5",
+            {
+              "border-red-500": errors.password
+            }
+          )
+        }
+        type="password" {...register('password', { required: true, minLength: 6 })}
+      />
       <button className="btn-primary">Create account</button>
 
       {/* divisor line */}
