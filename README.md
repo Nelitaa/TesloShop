@@ -228,6 +228,7 @@ npm i zod
 npx prisma migrate dev --name user-role
 npm i bcryptjs
 npm install react-hook-form
+npx prisma migrate dev -n country
 ```
 
 https://react-icons.github.io/react-icons/
