@@ -245,5 +245,6 @@ https://ngrok.com/
 https://nextjs.org/learn/dashboard-app/adding-authentication
 https://react-hook-form.com/
 https://www.creative-tim.com/twcomponents/component/tailwind-css-checkbox-by-material-tailwind
+https://gist.github.com/Klerith/9d1760a796c846efa61f4217d6d44bb4
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
