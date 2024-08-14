@@ -6,7 +6,7 @@ export default async function CheckoutLayout({ children }: {
 }) {
   const session = await auth();
   if (!session?.user) {
-    redirect("/auth/login?redirectTo=/checkout/address");
+    return redirect("/auth/login?redirectTo=/checkout/address");
   }
   return (
     <>
