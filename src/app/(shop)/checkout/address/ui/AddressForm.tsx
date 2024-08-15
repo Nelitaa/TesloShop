@@ -1,5 +1,6 @@
 'use client';
 
+import type { Country } from "@/interfaces";
 import clsx from "clsx";
 import { useForm } from "react-hook-form";
 
@@ -15,7 +16,11 @@ type FormInputs = {
   rememberAddress: boolean;
 }
 
-export const AddressForm = () => {
+interface Props {
+  countries: Country[];
+}
+
+export const AddressForm = ({ countries }: Props) => {
   const { handleSubmit, register, formState: { isValid } } = useForm<FormInputs>({
     defaultValues: {
       //Todo: read from db
@@ -83,7 +88,11 @@ export const AddressForm = () => {
           {...register('country', { required: true })}
         >
           <option value="">[ Select ]</option>
-          <option value="CRI">Costa Rica</option>
+          {
+            countries.map((country) => (
+              <option key={country.id} value={country.id}>{country.name}</option>
+            ))
+          }
         </select>
       </div>
       <div className="flex flex-col mb-2">
