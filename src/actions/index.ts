@@ -5,3 +5,5 @@ export { authenticate } from './auth/login';
 export { logout } from './auth/logout';
 export { registerUser } from './auth/register';
 export { getCountries } from './country/get-countries'
+export { setUserAddress } from './address/set-user-address';
+export { deleteUserAddress } from './address/delete-user-address';
