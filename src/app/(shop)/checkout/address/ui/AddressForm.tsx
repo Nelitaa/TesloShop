@@ -36,7 +36,7 @@ export const AddressForm = ({ countries }: Props) => {
     if (address.firstName) {
       reset(address);
     }
-  }, []);
+  }, [address, reset]);
 
   const onSubmit = (data: FormInputs) => {
     console.log({ data });
