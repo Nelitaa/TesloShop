@@ -119,7 +119,8 @@ Install this project:
 3. Install dependencies `npm install`.
 4. To start the database, use Docker. Run the command: `docker compose up -d`.
 5. Run Prisma migrations `npx prisma migrate dev`.
-6. Run seed `npm run seed`.
+6. Clear the browser's LocalStorage.
+7. Run seed `npm run seed`.
 
 ### Usage
 
