@@ -1,17 +1,34 @@
 'use client';
 
 import { useAddressStore, useCartStore } from "@/store";
-import { currencyFormat } from "@/utils";
+import { currencyFormat, sleep } from "@/utils";
+import clsx from "clsx";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export const PlaceOrder = () => {
   const [loaded, setLoaded] = useState(false);
+  const [isPlacingOrder, setIsPlacingOrder] = useState(false);
   const address = useAddressStore((state) => state.address);
   const { totalItems, subTotalPrice, tax, totalPrice } = useCartStore((state) => state.getSummaryInformation());
+  const cart = useCartStore(state => state.cart);
+
   useEffect(() => {
     setLoaded(true);
   }, []);
+
+  const onPlaceOrder = async () => {
+    setIsPlacingOrder(true);
+    // await sleep(2);
+    const productsToOrder = cart.map(product => ({
+      productId: product.id,
+      quantity: product.quantity,
+      size: product.size,
+    }));
+    // TODO: server action
+    setIsPlacingOrder(false);
+  }
+
   if (!loaded) {
     return <p>Loading...</p>
   }
@@ -49,13 +66,19 @@ export const PlaceOrder = () => {
         <p className="mb-5">
           <span className="text-xs">By placing your order, you agree to our <Link href="#" className="underline">Terms of Service</Link> and <Link href="#" className="underline">Privacy Policy</Link></span>
         </p>
+        {/* <p className="text-red-500">Order creation error</p> */}
         <button
-          className="flex btn-primary justify-center"
-        // href="/orders/123"
+          onClick={onPlaceOrder}
+          className={
+            clsx({
+              'btn-primary': !isPlacingOrder,
+              'btn-disabled': isPlacingOrder
+            })
+          }
         >
           Place Order
         </button>
       </div>
-    </div>
+    </div >
   )
 }
