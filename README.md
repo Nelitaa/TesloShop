@@ -232,6 +232,8 @@ npm install react-hook-form
 npx prisma migrate dev -n country
 npx prisma migrate dev -n user-address
 npx prisma migrate dev -n city-useraddress
+npx prisma migrate dev -n order-address-items
+
 ```
 
 https://react-icons.github.io/react-icons/
