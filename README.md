@@ -233,7 +233,7 @@ npx prisma migrate dev -n country
 npx prisma migrate dev -n user-address
 npx prisma migrate dev -n city-useraddress
 npx prisma migrate dev -n order-address-items
-
+npx prisma migrate dev -n ispaid-default
 ```
 
 https://react-icons.github.io/react-icons/
@@ -252,5 +252,6 @@ https://nextjs.org/learn/dashboard-app/adding-authentication
 https://react-hook-form.com/
 https://www.creative-tim.com/twcomponents/component/tailwind-css-checkbox-by-material-tailwind
 https://gist.github.com/Klerith/9d1760a796c846efa61f4217d6d44bb4
+https://www.prisma.io/docs/orm/prisma-client/queries/transactions#interactive-transactions
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
