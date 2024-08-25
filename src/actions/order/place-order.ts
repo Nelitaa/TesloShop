@@ -50,46 +50,86 @@ export const placeOrder = async (productIds: ProductToOrder[], address: Address)
   }, { subTotalPrice: 0, tax: 0, totalPrice: 0 });
 
   // Create transaction in database
-  const prismaTx = await prisma.$transaction(async (tx) => {
+  try {
+    const prismaTx = await prisma.$transaction(async (tx) => {
 
-    // 1. Update stock
+      // 1. Update stock
 
-    // 2. Create order header and details
-    const order = await tx.order.create({
-      data: {
-        userId: userId,
-        totalItems: itemsInOrder,
-        subTotalPrice: subTotalPrice,
-        tax: tax,
-        totalPrice: totalPrice,
+      const updatedProductsPromises = products.map((product) => {
+        const productQuantity = productIds.filter(
+          p => p.productId === product.id
+        ).reduce((acc, item) => item.quantity + acc, 0);
 
-        OrderItem: {
-          createMany: {
-            data: productIds.map((p) => ({
-              quantity: p.quantity,
-              size: p.size,
-              productId: p.productId,
-              price: products.find((product) => product.id === p.productId)?.price ?? 0,
-            })),
+        if (productQuantity === 0) {
+          throw new Error(`Product ${product.id} does not have quantity`);
+        }
+        return tx.product.update({
+          where: { id: product.id },
+          data: {
+            inStock: {
+              decrement: productQuantity
+            }
+          }
+        })
+      })
+
+      const updatedProducts = await Promise.all(updatedProductsPromises);
+
+      // Check if all products have stock
+      updatedProducts.forEach((product) => {
+        if (product.inStock < 0) {
+          throw new Error(`Product ${product.title} is out of stock`);
+        }
+      });
+
+      // 2. Create order header and details
+      const order = await tx.order.create({
+        data: {
+          userId: userId,
+          totalItems: itemsInOrder,
+          subTotalPrice: subTotalPrice,
+          tax: tax,
+          totalPrice: totalPrice,
+
+          OrderItem: {
+            createMany: {
+              data: productIds.map((p) => ({
+                quantity: p.quantity,
+                size: p.size,
+                productId: p.productId,
+                price: products.find((product) => product.id === p.productId)?.price ?? 0,
+              })),
+            },
           },
         },
-      },
-    });
+      });
 
-    // 3. Create order address
-    const { country, ...restAddress } = address;
-    const orderAddress = await tx.orderAddress.create({
-      data: {
-        ...restAddress,
-        countryId: country,
-        orderId: order.id,
-      },
+      // 3. Create order address
+      const { country, ...restAddress } = address;
+      const orderAddress = await tx.orderAddress.create({
+        data: {
+          ...restAddress,
+          countryId: country,
+          orderId: order.id,
+        },
+      });
+
+      return {
+        updatedProducts: updatedProducts,
+        order: order,
+        orderAddress: orderAddress,
+      }
     });
 
     return {
-      order: order,
-      updatedProducts: [],
-      orderAddress: orderAddress,
-    }
-  });
+      ok: true,
+      order: prismaTx.order,
+      prismaTx: prismaTx,
+    };
+  } catch (error: any) {
+    return {
+      ok: false,
+      message: error?.message,
+    };
+  }
 };
