@@ -5,14 +5,18 @@ import { useAddressStore, useCartStore } from "@/store";
 import { currencyFormat, sleep } from "@/utils";
 import clsx from "clsx";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export const PlaceOrder = () => {
+  const router = useRouter();
   const [loaded, setLoaded] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const [isPlacingOrder, setIsPlacingOrder] = useState(false);
   const address = useAddressStore((state) => state.address);
   const { totalItems, subTotalPrice, tax, totalPrice } = useCartStore((state) => state.getSummaryInformation());
   const cart = useCartStore(state => state.cart);
+  const clearCart = useCartStore(state => state.clearCart);
 
   useEffect(() => {
     setLoaded(true);
@@ -27,8 +31,15 @@ export const PlaceOrder = () => {
       size: product.size,
     }));
 
-    await placeOrder(productsToOrder, address);
-    setIsPlacingOrder(false);
+    const resp = await placeOrder(productsToOrder, address);
+    if (!resp.ok) {
+      setIsPlacingOrder(false);
+      setErrorMessage(resp.message);
+      return;
+    }
+    // If the order is successful, clear the cart
+    clearCart();
+    router.replace('/orders/' + resp.order?.id);
   }
 
   if (!loaded) {
@@ -68,7 +79,7 @@ export const PlaceOrder = () => {
         <p className="mb-5">
           <span className="text-xs">By placing your order, you agree to our <Link href="#" className="underline">Terms of Service</Link> and <Link href="#" className="underline">Privacy Policy</Link></span>
         </p>
-        {/* <p className="text-red-500">Order creation error</p> */}
+        <p className="text-red-500">{errorMessage}</p>
         <button
           onClick={onPlaceOrder}
           className={
