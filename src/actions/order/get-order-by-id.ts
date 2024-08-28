@@ -45,14 +45,14 @@ export const getOrderById = async (id: string) => {
         throw 'You are not authorized to view this order'
       }
     }
-      return {
-        ok: true,
-        order: order
-      }
-    } catch (error) {
-      return {
-        ok: false,
-        message: 'Error getting order by id'
-      }
+    return {
+      ok: true,
+      order: order
+    }
+  } catch (error) {
+    return {
+      ok: false,
+      message: 'Error getting order by id'
     }
   }
+}
