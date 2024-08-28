@@ -119,8 +119,7 @@ Install this project:
 3. Install dependencies `npm install`.
 4. To start the database, use Docker. Run the command: `docker compose up -d`.
 5. Run Prisma migrations `npx prisma migrate dev`.
-6. Clear the browser's LocalStorage.
-7. Run seed `npm run seed`.
+6. Run seed `npm run seed`.
 
 ### Usage
 
@@ -129,6 +128,8 @@ To run the project, execute the following command:
 ```sh
   npm run dev
 ```
+
+Clear the browser's LocalStorage.
 
 ### Run tests
 
@@ -234,6 +235,7 @@ npx prisma migrate dev -n user-address
 npx prisma migrate dev -n city-useraddress
 npx prisma migrate dev -n order-address-items
 npx prisma migrate dev -n ispaid-default
+npx prisma migrate dev -n transaction-id
 ```
 
 https://react-icons.github.io/react-icons/
