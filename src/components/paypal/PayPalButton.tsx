@@ -1,5 +1,6 @@
 'use client';
 
+import { CreateOrderActions, CreateOrderData } from "@paypal/paypal-js";
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js"
 
 export const PayPalButton = () => {
@@ -12,7 +13,24 @@ export const PayPalButton = () => {
       </div>
     )
   }
+
+  const createOrder = async (data: CreateOrderData, actions: CreateOrderActions): Promise<string> => {
+    const transactionId = await actions.order.create({
+      intent: 'CAPTURE',
+      purchase_units: [
+        {
+          amount: {
+            currency_code: 'USD',
+            value: '100.00',
+          }
+        }
+      ]
+    })
+    return transactionId;
+  }
+
   return (
-    <PayPalButtons />
+    <PayPalButtons
+      createOrder={createOrder} />
   )
 }
