@@ -3,7 +3,14 @@
 import { CreateOrderActions, CreateOrderData } from "@paypal/paypal-js";
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js"
 
-export const PayPalButton = () => {
+interface Props {
+  orderId: string;
+  amount: number;
+}
+
+export const PayPalButton = ({ orderId, amount }: Props) => {
+  const roundedAmount = (Math.round(amount * 100)) / 100;
+
   const [{ isPending }] = usePayPalScriptReducer();
   if (isPending) {
     return (
@@ -21,7 +28,7 @@ export const PayPalButton = () => {
         {
           amount: {
             currency_code: 'USD',
-            value: '100.00',
+            value: `${roundedAmount}`,
           }
         }
       ]
