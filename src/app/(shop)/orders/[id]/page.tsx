@@ -23,11 +23,10 @@ export default async function OrderPage({ params }: Props) {
   const address = order?.OrderAddress;
 
   return (
-    <div className="flex justify-center items-center mb-72 px-10 sm:px-0">
-      <div className="flex flex-col w-[1000px]">
-        <Title title={`Order #${id.split('-').at(-1)}`} />
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
-
+    <div className="flex justify-center items-center mb-72 p-10 sm:px-0">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 w-full">
+        <div>
+          <Title title={`Order #${id.split('-').at(-1)}`} />
           <div className="flex flex-col mt-5">
             <div className={
               clsx(
