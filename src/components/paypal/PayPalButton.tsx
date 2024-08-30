@@ -1,7 +1,9 @@
 'use client';
 
+import { setTransactionId } from "@/actions";
 import { CreateOrderActions, CreateOrderData } from "@paypal/paypal-js";
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js"
+import { set } from "zod";
 
 interface Props {
   orderId: string;
@@ -33,6 +35,14 @@ export const PayPalButton = ({ orderId, amount }: Props) => {
         }
       ]
     })
+
+    // Save the transactionId to the database
+    const { ok } = await setTransactionId(orderId, transactionId);
+    if (!ok) {
+      throw new Error('Failed to set transaction id');
+    }
+    console.log('Transaction ID:', transactionId);
+
     return transactionId;
   }
 
