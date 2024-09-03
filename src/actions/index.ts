@@ -1,3 +1,4 @@
+import { paypalCheckPayment } from './payments/paypal-check-payment';
 export { getPaginatedProductsWithImages } from './product/product-pagination';
 export { getProductBySlug } from './product/get-product-by-slug';
 export { getStockBySlug } from './product/get-stock-by-slug';
@@ -12,3 +13,4 @@ export { placeOrder } from './order/place-order';
 export { getOrderById } from './order/get-order-by-id';
 export { getOrderByUser } from './order/get-order-by-user';
 export { setTransactionId } from './payments/set-transaction-id';
+export { paypalCheckPayment } from './payments/paypal-check-payment';
