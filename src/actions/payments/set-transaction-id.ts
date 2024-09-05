@@ -12,7 +12,7 @@ export const setTransactionId = async (orderId: string, transactionId: string) =
     if (!order) {
       return {
         ok: false,
-        error: 'Order not found'
+        message: 'Order not found'
       }
     }
 
@@ -20,9 +20,10 @@ export const setTransactionId = async (orderId: string, transactionId: string) =
       ok: true,
     }
   } catch (error) {
+    console.log(error);
     return {
       ok: false,
-      error: 'Failed to set transaction id'
+      message: 'Failed to set transaction id'
     }
   }
 };

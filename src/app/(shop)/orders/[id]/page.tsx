@@ -97,9 +97,8 @@ export default async function OrderPage({ params }: Props) {
             <span className="mt-5 text-2xl">Total: </span>
             <span className="mt-5 text-2xl text-right">{currencyFormat(order!.totalPrice)}</span>
           </div>
-
           <div className="mt-5 mb-2 w-full">
-            <PayPalButton orderId={order!.id} amount={order!.totalPrice} />
+            <PayPalButton amount={order!.totalPrice} orderId={order!.id} />
           </div>
         </div>
       </div>

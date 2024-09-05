@@ -19,7 +19,7 @@ export const PayPalButton = ({ orderId, amount }: Props) => {
         <div className="h-11 bg-gray-300 rounded" />
         <div className="h-11 bg-gray-300 rounded mt-2" />
       </div>
-    )
+    );
   }
 
   const createOrder = async (data: CreateOrderData, actions: CreateOrderActions): Promise<string> => {
@@ -30,20 +30,18 @@ export const PayPalButton = ({ orderId, amount }: Props) => {
           amount: {
             currency_code: 'USD',
             value: `${roundedAmount}`,
-          }
-        }
-      ]
-    })
+          },
+        },
+      ],
+    });
 
     // Save the transactionId to the database
     const { ok } = await setTransactionId(orderId, transactionId);
     if (!ok) {
       throw new Error('Failed to set transaction id');
     }
-    console.log('Transaction ID:', transactionId);
-
     return transactionId;
-  }
+  };
 
   const onApprove = async (data: OnApproveData, actions: OnApproveActions) => {
     console.log('OnApprove');
@@ -51,11 +49,12 @@ export const PayPalButton = ({ orderId, amount }: Props) => {
     if (!details) return;
     if (!details.id) return;
     await paypalCheckPayment(details.id);
-  }
+  };
 
   return (
     <PayPalButtons
       createOrder={createOrder}
-      onApprove={onApprove} />
-  )
-}
+      onApprove={onApprove}
+    />
+  );
+};
