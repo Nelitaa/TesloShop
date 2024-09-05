@@ -2,6 +2,7 @@
 
 import { PayPalOrderStatusResponse } from "@/interfaces";
 import prisma from "@/lib/prisma";
+import { revalidatePath } from "next/cache";
 
 export const paypalCheckPayment = async (paypalTransactionId: string) => {
   const authToken = await getPayPalBearerToken();
@@ -40,6 +41,11 @@ export const paypalCheckPayment = async (paypalTransactionId: string) => {
         paidAt: new Date(),
       },
     });
+    // Revalidate path
+    revalidatePath(`/orders/${orderId}`);
+    return {
+      ok: true,
+    };
 
   } catch (error) {
     return {
