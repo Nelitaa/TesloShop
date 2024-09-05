@@ -1,6 +1,7 @@
 "use server";
 
 import { PayPalOrderStatusResponse } from "@/interfaces";
+import prisma from "@/lib/prisma";
 
 export const paypalCheckPayment = async (paypalTransactionId: string) => {
   const authToken = await getPayPalBearerToken();
@@ -25,6 +26,23 @@ export const paypalCheckPayment = async (paypalTransactionId: string) => {
     return {
       ok: false,
       message: "Payment not completed",
+    };
+  }
+
+  // Update the database with the payment status
+  try {
+    await prisma.order.update({
+      where: { id: orderId },
+      data: {
+        isPaid: true,
+        paidAt: new Date(),
+      },
+    });
+
+  } catch (error) {
+    return {
+      ok: false,
+      message: "Failed to verify payment",
     };
   }
 };
@@ -53,7 +71,10 @@ const getPayPalBearerToken = async (): Promise<string | null> => {
   };
 
   try {
-    const result = await fetch(oauth2Url, requestOptions).then((r) => r.json());
+    const result = await fetch(oauth2Url, {
+      ...requestOptions,
+      cache: 'no-store'
+    }).then((r) => r.json());
     return result.access_token;
   } catch (error) {
     console.log(error);
@@ -80,8 +101,10 @@ const verifyPayPalPayment = async (
   };
 
   try {
-    const resp = await fetch(paypalOrderUrl, requestOptions).then(r => r.json());
-    console.log({ resp });
+    const resp = await fetch(paypalOrderUrl, {
+      ...requestOptions,
+      cache: 'no-store'
+    }).then(r => r.json());
     return resp;
   } catch (error) {
     console.log(error);
