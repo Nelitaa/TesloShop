@@ -1,12 +1,12 @@
 export const revalidate = 0;
 
-import { getPaginatedOrders } from '@/actions';
+import { getPaginatedUsers } from '@/actions';
 import { Title } from '@/components';
 import { redirect } from 'next/navigation';
 import { UsersTable } from './ui/UsersTable';
 
 export default async function UsersPage() {
-  const { ok, orders = [] } = await getPaginatedOrders();
+  const { ok, users = [] } = await getPaginatedUsers();
   if (!ok) {
     redirect('/auth/login');
   }
