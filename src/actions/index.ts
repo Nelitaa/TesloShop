@@ -22,3 +22,5 @@ export { paypalCheckPayment } from './payments/paypal-check-payment';
 
 export { getPaginatedUsers } from './user/get-paginated-users';
 export { changeUserRole } from './user/change-user-role';
+
+export { getCategories } from './category/get-categories';
