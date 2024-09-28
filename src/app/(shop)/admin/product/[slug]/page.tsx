@@ -12,8 +12,8 @@ export default async function ProductPage({ params }: Props) {
   const { slug } = params;
 
   const [product, categories] = await Promise.all([
-    getCategories(),
-    getProductBySlug(slug)
+    getProductBySlug(slug),
+    getCategories()
   ]);
 
   if (!product) {
